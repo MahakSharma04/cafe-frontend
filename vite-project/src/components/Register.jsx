@@ -33,7 +33,7 @@ export default function Register(){
         <p>
             <input type="text" 
             placeholder="Email Address" 
-            onChange={(e) => setUser({ ...user, emailAddress: e.target.value})}
+            onChange={(e) => setUser({ ...user, email: e.target.value})}
             />
         </p>
         <p>
