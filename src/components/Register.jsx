@@ -3,10 +3,10 @@ import axios from "axios";
 export default function Register(){
     const [user,setUser] = useState({});
     const [error, setError] = useState();
+    const API_URL = import.meta.env.VITE_API_URL
     const handleSubmit = async () =>{
         try{
-            //const url = "http://localhost:8080/api/users/register"
-            const url = "https://portfolio-web-merncafe.vercel.app/api/users/register"
+            const url=`${API_URL}/api/users/register`
             const result = await axios.post(url,user);
             setError("Data saved successfully");
         }catch(err){
