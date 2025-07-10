@@ -1,48 +1,51 @@
-import { useState } from 'react';
+import {useState} from "react";
 import axios from "axios";
-export default function Register(){
-    const [user,setUser] = useState({});
-    const [error, setError] = useState();
+export default function Register() {
+
+    const [user,setUser]=useState({})
+    const [error, setError]=useState()
     const API_URL = import.meta.env.VITE_API_URL
-    const handleSubmit = async () =>{
+
+    const handleSubmit =async()=>{
         try{
             const url=`${API_URL}/api/users/register`
+            
             const result = await axios.post(url,user);
-            setError("Data saved successfully");
+            setError("Registration successful!");
+
         }catch(err){
-            console.log(err);
-            setError("Something went wrong");
+
+         console.log(err);
+         setError("Failed to register. Please try again later.");
         }
-    };
-    return(
-        <>
-        <h2>Registration form</h2>
+        
+    }
+
+  return (
+    <div>
+        <h2>Registeration Form</h2>
         {error}
         <p>
             <input type="text"
-             placeholder="First Name" 
-            onChange={(e) => setUser({ ...user, firstName: e.target.value})}
-            />
+            placeholder="First Name" 
+            onChange={(e)=>setUser({...user, firstName: e.target.value})}/>
         </p>
         <p>
-            <input type="text" 
+            <input type="text"
             placeholder="Last Name"
-            onChange={(e) => setUser({ ...user, lastName: e.target.value})}
-            />
+            onChange={(e)=>setUser({...user, lastName: e.target.value})} />
         </p>
         <p>
-            <input type="text" 
-            placeholder="Email Address" 
-            onChange={(e) => setUser({ ...user, email: e.target.value})}
-            />
+            <input type="email"
+            placeholder="Email Address"
+            onChange={(e)=>setUser({...user, email: e.target.value})} />
         </p>
         <p>
-            <input type="password" 
-            placeholder="New" 
-            onChange={(e) => setUser({ ...user, password: e.target.value})}
-             />
+            <input type="password"
+             placeholder="New Password"
+             onChange={(e)=>setUser({...user, password: e.target.value})} />
         </p>
         <button onClick={handleSubmit}>Submit</button>
-        </>
-    )
+    </div>
+  )
 }
