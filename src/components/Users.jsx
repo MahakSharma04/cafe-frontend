@@ -25,7 +25,7 @@ export default function Users() {
   return (
     <div>
       {users.map((value) => (
-        <li key={value._id}>{value.firstName}</li>
+        <li key={value._id}>{value.firstName}-<button>Delete</button></li>
       ))}
     </div>
   );
