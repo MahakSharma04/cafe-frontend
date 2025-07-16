@@ -216,7 +216,7 @@ export default function Users() {
               <th>Role</th>
             </tr>
           </thead>
-          {users.map((value) => (
+          {users && users.map((value) => (
             <tbody key={value._id}>
               <tr>
                 <td>{value.firstName}</td>
