@@ -1,0 +1,57 @@
+/* Header.css */
+
+.navbar {
+    background-color: #4b2e2e; /* rich coffee brown */
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .navbar h1 {
+    color: #f5e9dc;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links a {
+    color: #f5e9dc;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    background-color: #7a504a;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+  
+    .nav-links a {
+      width: 100%;
+    }
+  }
+  

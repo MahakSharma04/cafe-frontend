@@ -1,36 +1,35 @@
-/* Register.css – Café-style theme for registration page */
+/* Profile.css – Styling for the user profile page */
 
-.App-Register-Row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Profile-Container {
     background-color: #fff7f0;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding: 2rem;
   }
   
-  .App-Register-Row > div {
+  .Profile-Box {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 2rem 3rem;
-    box-shadow: 0 4px 12px rgba(109, 71, 45, 0.15);
-    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(109, 71, 45, 0.1);
+    max-width: 500px;
     width: 100%;
   }
   
-  .App-Register-Row h2 {
+  .Profile-Box h3 {
     text-align: center;
     color: #5e3c28;
     margin-bottom: 1.5rem;
     font-weight: 600;
   }
   
-  .App-Register-Row p {
+  .Profile-Box p {
     margin: 1rem 0;
-    text-align: center;
   }
   
-  .App-Register-Row input {
+  .Profile-Box input {
     width: 100%;
     padding: 0.75rem;
     border-radius: 8px;
@@ -40,13 +39,13 @@
     transition: border-color 0.3s;
   }
   
-  .App-Register-Row input:focus {
+  .Profile-Box input:focus {
     outline: none;
     border-color: #a9714b;
     background-color: #fff4eb;
   }
   
-  .App-Register-Row button {
+  .Profile-Box button {
     width: 100%;
     padding: 0.75rem;
     background-color: #8b5e3c;
@@ -55,27 +54,12 @@
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
+    margin-top: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
-  .App-Register-Row button:hover {
+  .Profile-Box button:hover {
     background-color: #6c4329;
-  }
-  
-  .App-Register-Row a {
-    color: #a9714b;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-  
-  .App-Register-Row a:hover {
-    text-decoration: underline;
-  }
-  
-  .App-Register-Row hr {
-    margin: 2rem 0;
-    border: none;
-    border-top: 1px solid #ddd0c1;
   }
   
