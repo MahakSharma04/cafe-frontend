@@ -3,13 +3,14 @@ import axios from "axios";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { useFetcher } from "react-router-dom";
+import "./Orders.css"
 export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState();
   const [page, setPage] = useState(1);
   const [limit,setLimit]= useState(3)
   const [totalPages, setTotalPages] = useState(1);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Pending");
   const { user } = useContext(AppContext);
   const API_URL = import.meta.env.VITE_API_URL;
   const fetchOrders = async () => {
@@ -28,9 +29,8 @@ export default function Orders() {
     }
   };
   useEffect(() => {
-  fetchOrders();
-}, [page, limit, status]);
-
+    fetchOrders();
+  }, [status]);
   const updateOrder = async (status, id) => {
     try {
       const url = `${API_URL}/api/orders/${id}`;
@@ -42,48 +42,44 @@ export default function Orders() {
     }
   };
   return (
-    <div>
-      <h2>Order Management</h2>
-      <div>
-        <select onChange={(e) => setStatus(e.target.value)}>
-          <option value="">All</option>
-          <option value="Pending" >
-            Pending
-          </option>
-          <option value="completed">Completed</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-        {/* <button>Show</button> */}
-      </div>
+  <div className="Orders-Container">
+    <h2>Order Management</h2>
+    <div className="Orders-Filter">
+      <select defaultValue="Pending" onChange={(e) => setStatus(e.target.value)}>
+        <option value="">All</option>
+        <option value="Pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <ul className="Order-List">
       {orders &&
         orders.map((order) => (
-          <li>
-            {order._id}-{order.orderValue}-{order.status}-
+          <li key={order._id} className="Order-Item">
+            <span className="Order-Info">
+              {order._id} - ₹{order.orderValue} - {order.status}
+            </span>
             {order.status === "Pending" && (
-              <>
-                <button onClick={() => updateOrder("cancelled", order._id)}>
+              <div className="Order-Actions">
+                <button
+                  className="cancel"
+                  onClick={() => updateOrder("cancelled", order._id)}
+                >
                   Cancel
                 </button>
-                -
-                <button onClick={() => updateOrder("completed", order._id)}>
+                <button
+                  className="complete"
+                  onClick={() => updateOrder("completed", order._id)}
+                >
                   Complete
                 </button>
-              </>
+              </div>
             )}
           </li>
         ))}
-        <div>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          Previous
-        </button>
-        Page {page} of {totalPages}
-        <button
-          disabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
+    </ul>
+  </div>
+);
+
 }
